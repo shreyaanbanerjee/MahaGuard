@@ -1,4 +1,7 @@
-@import "tailwindcss";
+/* Native CSS reset — replaces @import "tailwindcss" to avoid Turbopack/PostCSS deadlock */
+.font-sans { font-family: "Inter", system-ui, -apple-system, sans-serif; }
+.antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
 
 /* ─── Design Tokens ─────────────────────────────────────────────────────────── */
 :root {

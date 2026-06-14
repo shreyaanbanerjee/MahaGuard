@@ -10,7 +10,7 @@ from db.supabase_client import get_supabase
 
 logger = logging.getLogger(__name__)
 
-_EMBEDDING_MODEL = "models/text-embedding-004"
+_EMBEDDING_MODEL = "models/gemini-embedding-001"
 _BATCH_SIZE = 20  # Embed in batches to avoid rate limits
 
 
@@ -41,10 +41,19 @@ async def embed_and_store_chunks(task_id: str, chunk_ids: list[str], chunk_texts
         batch_ids = chunk_ids[i:i + _BATCH_SIZE]
         batch_texts = chunk_texts[i:i + _BATCH_SIZE]
 
-        for chunk_id, text in zip(batch_ids, batch_texts):
-            embedding = _get_embedding(text)
-            if embedding:
-                sb.table("chunks").update({"embedding": embedding}).eq("id", chunk_id).execute()
+        try:
+            result = genai.embed_content(
+                model=_EMBEDDING_MODEL,
+                content=batch_texts,
+                task_type="retrieval_document",
+                output_dimensionality=768,
+            )
+            embeddings = result.get("embedding", [])
+            for chunk_id, embedding in zip(batch_ids, embeddings):
+                if embedding:
+                    sb.table("chunks").update({"embedding": embedding}).eq("id", chunk_id).execute()
+        except Exception as e:
+            logger.error(f"Batch embedding failed: {e}")
 
     logger.info(f"Embeddings stored for {len(chunk_ids)} chunks — task {task_id}")
 
@@ -57,6 +66,7 @@ def embed_query(query_text: str) -> Optional[list[float]]:
             model=_EMBEDDING_MODEL,
             content=query_text,
             task_type="retrieval_query",
+            output_dimensionality=768,
         )
         return result["embedding"]
     except Exception as e:

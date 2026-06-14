@@ -49,10 +49,11 @@ def detect_pdf_type(pdf_path: str) -> dict:
         if len(text) < TEXT_THRESHOLD:
             scanned_pages.append(i + 1)  # 1-indexed
 
+    page_count = doc.page_count  # read before close
     doc.close()
     return {
-        "is_scanned": len(scanned_pages) == doc.page_count,
-        "page_count": doc.page_count,
+        "is_scanned": len(scanned_pages) == page_count,
+        "page_count": page_count,
         "scanned_pages": scanned_pages,
     }
 

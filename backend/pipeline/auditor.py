@@ -147,7 +147,7 @@ Return a complete RiskScorecard JSON. Every finding must reference the exact raw
     # ─── Step 4: instructor-wrapped LLM call ─────────────────────────────────
     try:
         gemini_client = GenerativeModel(
-            model_name="gemini-1.5-flash",
+            model_name="gemini-flash-latest",
             system_instruction=system_prompt,
         )
         client = instructor.from_gemini(
@@ -211,7 +211,7 @@ Return a complete RiskScorecard JSON. Every finding must reference the exact raw
         risk_findings=all_findings,
         glossary_terms_injected=injected_terms,
         processing_time_seconds=processing_time,
-        model_used="gemini-1.5-flash",
+        model_used="gemini-flash-latest",
     )
 
     # ─── Step 8: Persist to Supabase ─────────────────────────────────────────
@@ -236,7 +236,7 @@ Return a complete RiskScorecard JSON. Every finding must reference the exact raw
         "scorecard_json": final_scorecard.model_dump(mode="json"),
         "glossary_terms_injected": injected_terms,
         "processing_time_seconds": processing_time,
-        "model_used": "gemini-1.5-flash",
+        "model_used": "gemini-flash-latest",
     }).execute()
 
     logger.info(f"Scorecard persisted for task {task_id} — overall: {overall_risk.value}")
