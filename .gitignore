@@ -31,6 +31,8 @@ Thumbs.db
 
 # ─── Uploads / Temp ───────────────────────────────────────────────────────────
 *.pdf
+# Exception: allow bundled sample PDFs in frontend public folder
+!frontend/public/**/*.pdf
 /tmp/
 backend/uploads/
 
