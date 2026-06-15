@@ -65,16 +65,15 @@ export default function UploadZone({ onFileSelected, isUploading }: UploadZonePr
       {/* Icon */}
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "24px" }}>
         <div style={{
-          width: 72, height: 72, borderRadius: "50%",
-          background: "rgba(99,102,241,0.12)",
-          border: "1px solid rgba(99,102,241,0.3)",
+          width: 64, height: 64, borderRadius: "12px",
+          background: "#eef2f7",
+          border: "1px solid var(--border)",
           display: "flex", alignItems: "center", justifyContent: "center",
-          transition: "all 0.3s ease",
-          boxShadow: isDragOver ? "0 0 32px rgba(99,102,241,0.3)" : "none",
+          transition: "all 0.2s ease",
         }}>
           {isDragOver
-            ? <Upload size={28} color="var(--accent-light)" strokeWidth={1.5} />
-            : <FileText size={28} color="var(--accent-light)" strokeWidth={1.5} />
+            ? <Upload size={26} color="var(--navy)" strokeWidth={1.5} />
+            : <FileText size={26} color="var(--navy-light)" strokeWidth={1.5} />
           }
         </div>
       </div>
@@ -86,13 +85,13 @@ export default function UploadZone({ onFileSelected, isUploading }: UploadZonePr
         Drag & drop a PDF or click to browse — Form 3, Architect Form 1, Title Reports, etc.
       </p>
 
-      <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "20px" }}>
+      <div style={{ display: "flex", gap: "8px", justifyContent: "center", flexWrap: "wrap", marginBottom: "20px" }}>
         {["Form 3 (CA Certificate)", "Architect Form 1", "Title Search Report", "Satbara Utara"].map((label) => (
           <span key={label} style={{
-            padding: "4px 12px", borderRadius: "999px",
-            background: "rgba(99,102,241,0.08)",
-            border: "1px solid rgba(99,102,241,0.2)",
-            fontSize: "0.72rem", color: "var(--accent-light)", fontWeight: 500,
+            padding: "3px 10px", borderRadius: "999px",
+            background: "var(--bg-subtle)",
+            border: "1px solid var(--border)",
+            fontSize: "0.72rem", color: "var(--text-muted)", fontWeight: 500,
           }}>
             {label}
           </span>

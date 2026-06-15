@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   description:
     "Enterprise-grade automated legal risk audit and extraction engine for Maharashtra Real Estate (MahaRERA) documents. Powered by AI with zero-hallucination citation verification.",
   keywords: ["MahaRERA", "legal audit", "real estate", "Maharashtra", "RERA compliance", "AI"],
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
   openGraph: {
     title: "MahaGuard AI",
     description: "Automated Legal Risk Audit Engine for MahaRERA Documents",
@@ -24,7 +28,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>{children}</body>
     </html>
   );
