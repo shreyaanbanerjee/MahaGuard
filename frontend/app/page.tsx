@@ -223,6 +223,59 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+          {/* Resources & Guidelines */}
+          <div style={{ maxWidth: 800, margin: "0 auto 80px", padding: "32px", background: "rgba(255,255,255,0.02)", border: "1px solid var(--border)", borderRadius: "16px" }}>
+            <h2 style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "16px" }}>
+              How to test MahaGuard AI
+            </h2>
+            <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginBottom: "24px", lineHeight: 1.6 }}>
+              You can test the AI using real MahaRERA documents or our generated samples with intentional legal and financial anomalies.
+            </p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              {/* Option 1: Sample Docs */}
+              <div style={{ padding: "20px", background: "rgba(99,102,241,0.05)", border: "1px solid rgba(99,102,241,0.2)", borderRadius: "12px" }}>
+                <h3 style={{ fontSize: "0.95rem", fontWeight: 600, color: "var(--accent-light)", marginBottom: "8px" }}>
+                  Option 1: Quick Test (Sample Documents)
+                </h3>
+                <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "16px" }}>
+                  Download one of these sample documents and upload it above. We generated these with specific risks to demonstrate the AI's capabilities.
+                </p>
+                <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                  <a
+                    href="/examples/sample_form3_violation.pdf"
+                    download
+                    className="btn-ghost"
+                    style={{ fontSize: "0.8rem", padding: "8px 16px", background: "rgba(255,255,255,0.05)", border: "1px solid var(--border)", borderRadius: "8px", color: "var(--text-primary)", textDecoration: "none" }}
+                  >
+                    📄 Download Form 3 (Capital Diversion Risk)
+                  </a>
+                  <a
+                    href="/examples/sample_title_report.pdf"
+                    download
+                    className="btn-ghost"
+                    style={{ fontSize: "0.8rem", padding: "8px 16px", background: "rgba(255,255,255,0.05)", border: "1px solid var(--border)", borderRadius: "8px", color: "var(--text-primary)", textDecoration: "none" }}
+                  >
+                    📄 Download Title Report (Litigation Risk)
+                  </a>
+                </div>
+              </div>
+
+              {/* Option 2: Live Portal */}
+              <div style={{ padding: "20px", background: "rgba(255,255,255,0.02)", border: "1px solid var(--border)", borderRadius: "12px" }}>
+                <h3 style={{ fontSize: "0.95rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: "8px" }}>
+                  Option 2: Live Audit (MahaRERA Portal)
+                </h3>
+                <ol style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.7, paddingLeft: "20px", margin: 0 }}>
+                  <li>Go to the official <a href="https://maharera.maharashtra.gov.in/" target="_blank" rel="noreferrer" style={{ color: "var(--accent-light)", textDecoration: "none" }}>MahaRERA Portal</a>.</li>
+                  <li>Click <strong>Registration &rarr; Registered Projects</strong> in the top menu.</li>
+                  <li>Search for a real developer (e.g., "Godrej" or "Lodha") and click <strong>View</strong> on any project.</li>
+                  <li>Scroll down to <strong>Uploaded Documents</strong> and download a digital PDF (like Form 3, Form 1, or Title Report).</li>
+                  <li>Upload it here!</li>
+                </ol>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Footer */}
