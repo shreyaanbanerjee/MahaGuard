@@ -30,11 +30,18 @@ app = FastAPI(
 )
 
 # ─── CORS ─────────────────────────────────────────────────────────────────────
+# ALLOWED_ORIGINS can be a comma-separated list, e.g.:
+#   https://mahaguard.vercel.app,https://mahaguard-git-main-user.vercel.app
+_raw_origins = os.environ.get(
+    "ALLOWED_ORIGINS",
+    os.environ.get("FRONTEND_URL", "http://localhost:3000"),
+)
+_allowed_origins = [o.strip().rstrip("/") for o in _raw_origins.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        os.environ.get("FRONTEND_URL", "http://localhost:3000"),
-    ],
+    allow_origins=_allowed_origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",  # allow all Vercel preview deployments
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
